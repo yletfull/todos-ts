@@ -1,21 +1,26 @@
 import React, { useEffect } from "react";
+import { useActions } from "../../hooks/useActions";
 import { useTypeSelector } from '../../hooks/useTypeSelector';
-import { useActions } from '../../hooks/useActions';
 
-function UsersList(){
+function TodosList(){
     const {
-        users,
+        todos,
         error,
-        isFetching
-    } = useTypeSelector((state) => state.user)
+        isFetching,
+        page,
+        limit
+    } = useTypeSelector((state) => state.todo)
 
     const {
-        fetchUsers,
+        fetchTodos,
     } = useActions();
 
     useEffect(() => {
-        fetchUsers();
-    }, [])
+        fetchTodos({
+            page,
+            limit,
+        });
+    }, [page, limit])
 
     if(isFetching) {
         return (
@@ -35,13 +40,13 @@ function UsersList(){
 
     return (
         <div>
-            {users.map((user) => (
-                <div key={user.id}>
-                    {user.name}
+            {todos.map((todo) => (
+                <div key={todo.id}>
+                    {todo.name}
                 </div>
             ))}
         </div>
     )
 }
 
-export default UsersList;
+export default TodosList;
