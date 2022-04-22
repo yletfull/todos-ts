@@ -1,11 +1,15 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import UsersList from './components/UsersList';
-import TodosList from './components/TodosList';
+import UsersList from './pages/UsersList';
+import TodosList from './pages/TodosList';
+import Header from './components/Header';
+import { Box } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
+    <Box>
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route 
             path='/users'
@@ -17,7 +21,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </div>
+      </Box>
   );
 }
 
