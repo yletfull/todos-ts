@@ -16,7 +16,7 @@ export enum LoginActionsTypes {
     FETCH_LOGIN_ERROR = 'FETCH_LOGIN_ERROR',
 }
 
-export interface authState {
+export interface AuthState {
     token: null | string;
     isFetching: boolean;
     error: null | string;
@@ -27,7 +27,7 @@ interface FetchAuthAction {
 }
 interface FetchAuthSuccessAction {
     type:  AuthActionsTypes.FETCH_AUTH_SUCCESS,
-    payload: any[],
+    payload: string,
 }
 interface FetchAuthErrorAction {
     type:  AuthActionsTypes.FETCH_AUTH_ERROR,
